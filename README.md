@@ -21,6 +21,22 @@ Then visit:
 go test ./... -v
 ```
 
+## 🔄 Updating Gota Dependency
+
+By default, `go.mod` uses a local `replace` directive pointing to `../gota` for side-by-side local development:
+
+```go
+replace github.com/carlosxfelipe/gota => ../gota
+```
+
+To switch to (or update to) the latest version of Gota directly from GitHub (`main` branch):
+
+```bash
+go mod edit -dropreplace=github.com/carlosxfelipe/gota -droprequire=github.com/carlosxfelipe/gota
+go get github.com/carlosxfelipe/gota@main
+go mod tidy
+```
+
 ---
 
 ## 👥 Seed Users & Credentials
@@ -81,4 +97,3 @@ npx -y @usebruno/cli run --env Local
 ## 📄 License
 
 MIT © [Carlos Felipe](https://github.com/carlosxfelipe)
-
